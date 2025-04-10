@@ -186,3 +186,162 @@ class SentenceTree:
 ---
 
 Let me know if you want a printable PDF version or flashcards!
+
+
+
+
+Ah gotcha — you're asking for a **general, condensed cheat sheet for the entire Data Structures course**, not just for one exam question. Here's a **one-page style master cheat sheet** with **key data structures**, **common operations**, and **complexities**, ideal for quick recall before or during the exam.
+
+---
+
+# 📘 DATA STRUCTURES MASTER CHEAT SHEET  
+**T-201-GSKI | Fall 2023 | Final Exam Prep**
+
+---
+
+## ⏱ TIME COMPLEXITY REFERENCE
+
+| Operation                    | ArrayList | SLL / DLL | Stack/Queue | BST (avg) | BST (worst) | Heap     | HashMap  |
+|-----------------------------|-----------|-----------|-------------|-----------|-------------|----------|----------|
+| Access                      | O(1)      | O(n)      | O(n)        | O(log n)  | O(n)        | O(1)     | O(1)     |
+| Insert at End               | O(1)*     | O(n)      | O(1)        | O(log n)  | O(n)        | O(log n) | O(1)     |
+| Insert at Front             | O(n)      | O(1)      | O(1)        | -         | -           | -        | -        |
+| Delete from Front           | O(n)      | O(1)      | O(1)        | O(log n)  | O(n)        | O(log n) | O(1)     |
+| Search                      | O(n)      | O(n)      | O(n)        | O(log n)  | O(n)        | O(n)     | O(1)     |
+
+\* = Amortized O(1) for dynamic arrays like Python lists.
+
+---
+
+## 🔗 LINKED LISTS
+
+### Singly Linked List (SLL)
+- Each node: `data`, `next`
+- Efficient insert/remove at front: O(1)
+- Traverse: O(n)
+
+### Doubly Linked List (DLL)
+- Each node: `data`, `prev`, `next`
+- Fast insert/remove at front/back: O(1)
+- Uses header/trailer sentinels
+
+---
+
+## 📚 STACK / QUEUE
+
+### Stack (LIFO)
+- push(), pop(), peek()
+- Can be built with list or linked list
+
+### Queue (FIFO)
+- enqueue(), dequeue(), peek()
+- CircularQueue used for O(1) operations
+
+---
+
+## 🧱 ARRAYLIST (Dynamic Array)
+- Fast access O(1), slow insert at front O(n)
+- Doubles in size when full
+- Insert/append: O(1)*, insert front: O(n)
+
+---
+
+## 🌲 BINARY SEARCH TREE (BST)
+
+- Left < Node < Right
+- Inorder Traversal = Sorted output
+- Insert/Search/Delete:
+  - Balanced: O(log n)
+  - Unbalanced: O(n)
+- Deletion: handle 0, 1, or 2 children
+
+---
+
+## ⛏ BINARY HEAP (Min/Max Heap)
+
+- Complete binary tree stored in array
+- Min-heap: parent ≤ children
+- Insert: O(log n) (bubble up)
+- remove(): O(log n) (bubble down)
+
+---
+
+## 📦 HASHMAP / DICTIONARY
+
+- Uses hash function for key indexing
+- Good hash = O(1) average-case for insert/search/delete
+- Collisions handled with chaining or open addressing
+
+---
+
+## 📜 TRAVERSALS (Trees)
+
+| Type      | Order                          |
+|-----------|--------------------------------|
+| Inorder   | Left → Root → Right            |
+| Preorder  | Root → Left → Right            |
+| Postorder | Left → Right → Root            |
+| Level-Order | BFS using queue              |
+
+---
+
+## 🧠 RECURSION PATTERN (SLL example)
+
+```python
+def nth_from_end(head, n):
+    def helper(node):
+        if not node: return 0, None
+        index, result = helper(node.next)
+        return index + 1, node if index == n else result
+    _, node = helper(head)
+    return node.data if node else None
+```
+
+---
+
+## 🌳 SENTENCE TREE PATTERN
+
+```python
+class TreeNode:
+    def __init__(self, word=""):
+        self.word = word
+        self.children = {}
+
+class SentenceTree:
+    def __init__(self): self.root = TreeNode()
+
+    def store_sentence(self, sentence):
+        node = self.root
+        for word in sentence.split():
+            if word not in node.children:
+                node.children[word] = TreeNode(word)
+            node = node.children[word]
+
+    def contains_sentence(self, sentence):
+        node = self.root
+        for word in sentence.split():
+            if word not in node.children:
+                return False
+            node = node.children[word]
+        return True
+```
+
+---
+
+## ✅ COMMON PATTERNS TO REMEMBER
+
+- **Recursive SLL**: base case first, return index/info
+- **Tree insert/search**: loop/recursively navigate children
+- **ArrayList resize**: copy to new array of double size
+- **BST delete**: use in-order successor if 2 children
+- **HashMap**: define custom hash function + chaining
+
+---
+
+Let me know if you'd like:
+- A printable version (PDF or PNG)
+- Flashcard set
+- Interactive practice quiz
+- Code templates for reuse during coding sections
+
+🔥 You've got this! Want a mock test next?
