@@ -1,0 +1,111 @@
+1. Time complexities from slowest to fastest
+✅ O(n^2), O(n*log n), O(n), O(log n), O(1)
+
+2. Recursive function needs:
+✅ A base case and a recursive step
+
+3. Binary search on sorted array:
+✅ O(log n)
+
+4. Capacity in dynamic array:
+✅ How many items, in total, the array can hold, before its next resize is necessary
+
+5. Time complexity of func()
+✅ O(log n)
+
+6. Best-case for append in ArrayList:
+✅ Any time the list doesn't require a resize
+
+7. Worst-case for removing from ArrayList:
+✅ O(n)
+
+8. Worst-case for inserting in ArrayList:
+✅ When inserting an item at the front end of the list (index: 0)
+
+9. Time complexity of reverse_list()
+✅ O(n^2)
+
+10. Time complexity of set_at(index=0) in ArrayList:
+✅ O(1)
+
+✅ Multiple Choice Questions (Correct Answers Marked)
+Time complexity of removing from back of SLL with tail:
+✅ O(n) – because you need to traverse to the node before the tail.
+
+LIFO stands for:
+✅ A stack
+
+Efficient operations for Queue in SLL:
+✅ push_back and pop_front
+
+Time complexity of adding behind a known node n1:
+✅ O(1)
+
+Time complexity of inserting before n1:
+✅ O(n) – because you must find the node before n1.
+
+Adding to back of DLL:
+✅ O(1)
+
+Removing from back of DLL:
+✅ O(1)
+
+FIFO stands for:
+✅ A queue
+
+Efficient Stack in deque (DLL):
+✅ Either push_front/back and pop on same side
+
+Fetching Nth item in DLL:
+✅ O(n)
+
+Time complexity in a binary tree heap:
+✅ add: O(log n), remove: O(log n)
+
+BST with keys in order (degenerate):
+✅ O(n)
+
+Postorder traversal:
+✅ H T U L P F 3 Ó R A
+
+Remove from balanced BST:
+✅ O(log n)
+
+Find in Hashmap with good distribution:
+✅ O(1)
+
+Preorder traversal time complexity of BST:
+✅ O(n)
+
+Which value is returned in Min-Heap on remove() call:
+✅ 1
+
+Min-Heap rule:
+✅ The parent of a node is smaller and the children are larger
+
+Hashmap with same hash function for all keys:
+✅ O(n)
+
+Preorder print of tree:
+✅ 8 3 1 6 4 7 10 14 13
+
+1. Time complexities from fastest to slowest: ✔️ _ O(1) O(log n) O(n) O(n^2)
+
+2. Which of the following statements about BSTs is true: ✔️ _ The other options are all True
+
+3. What value is returned when we call remove() in a binary heap: ✔️ _ The smallest/largest item in the tree depending if it’s a Min/MaxHeap
+
+4. Time complexity of inserting/removing at the front of a DLL: ✔️ _ O(1)
+
+5. Time complexity in a good hashmap: ✔️ _ O(1)
+
+6. Time complexity of inserting/removing at index 0 in ArrayList (non-circular): ✔️ _ O(n)
+(because all elements must be shifted)
+
+7. Last node printed in Preorder traversal of BST: ✔️ _ The node that is furthest to the right
+
+8. Time complexity of inserting at front of a SLL: ✔️ _ O(1)
+
+9. Time complexity of removing at front of a SLL: ✔️ _ O(1)
+
+10. Time complexity difference between hashmap and BST (balanced): ✔️ _ BST operations are O(log n) while a hashmap is O(1)
