@@ -1,0 +1,188 @@
+Here’s a **Data Structures (Gagnaskipan) Final Exam Cheat Sheet** tailored for your **T-201-GSKI** course with the **Fall 2023** exam style in mind.
+
+---
+
+# 📘 GAGNASKIPAN FINAL EXAM CHEAT SHEET  
+**T-201-GSKI | Data Structures | Teacher: Friðrik S. Tómasson**
+
+---
+
+## 🧠 **Big-O Time Complexity Quick Reference**
+
+| Operation                          | Time Complexity |
+|------------------------------------|-----------------|
+| Access in ArrayList                | O(1)            |
+| Insert/Delete at end (ArrayList)  | O(1) *amortized*|
+| Insert/Delete at front (ArrayList)| O(n)            |
+| Resize ArrayList                   | O(n)            |
+| Insert/Delete at front (DLL/SLL)  | O(1)            |
+| Search in SLL/DLL                  | O(n)            |
+| HashMap ops (good hash)           | O(1)            |
+| BST Search (balanced)             | O(log n)        |
+| BST Insert/Delete (balanced)      | O(log n)        |
+| BST Worst Case (unbalanced)       | O(n)            |
+| Binary Heap Insert/Delete         | O(log n)        |
+
+---
+
+## 🌲 **Trees**
+
+### Binary Search Tree (BST):
+- **Left < Node < Right**
+- Operations (Insert, Search, Delete):  
+  - Average: O(log n)  
+  - Worst: O(n)  
+- **Delete**:
+  - No child → Remove
+  - One child → Bypass
+  - Two children → Replace with in-order successor
+
+### Binary Heap (Min/Max):
+- **Remove()** returns **min/max** element
+- Insert/Remove: O(log n)
+- Maintains **complete binary tree** structure
+
+---
+
+## 🧩 **Linked Lists**
+
+### Singly Linked List (SLL):
+- Insert/Delete at front: O(1)
+- Insert/Delete at back: O(n)
+- Length (Recursive):
+```python
+def Length(head):
+    if not head:
+        return 0
+    return 1 + Length(head.next)
+```
+
+### Doubly Linked List (DLL):
+- Header/Trailer dummy nodes
+- Insert/Delete at front/back: O(1)
+- `push_back(value)`:
+```python
+def push_back(self, value):
+    new_node = DLL_Node(value)
+    last = self.trailer.prev
+    last.next = new_node
+    new_node.prev = last
+    new_node.next = self.trailer
+    self.trailer.prev = new_node
+```
+- `ContainsValue(value)`:
+```python
+def ContainsValue(self, value):
+    current = self.header.next
+    while current != self.trailer:
+        if current.data == value:
+            return True
+        current = current.next
+    return False
+```
+
+---
+
+## 📦 **ArrayList**
+
+### Resize:
+```python
+def resize(self):
+    self.capacity *= 2
+    new_arr = [None] * self.capacity
+    for i in range(self.size):
+        new_arr[i] = self.arr[i]
+    self.arr = new_arr
+```
+
+### Prepend:
+```python
+def prepend(self, value):
+    if self.size == self.capacity:
+        self.resize()
+    for i in range(self.size, 0, -1):
+        self.arr[i] = self.arr[i - 1]
+    self.arr[0] = value
+    self.size += 1
+```
+
+---
+
+## 🧠 **SLL Recursion: `nth_from_end`**
+```python
+def nth_from_end(head, n):
+    def helper(node):
+        if node is None:
+            return 0, None
+        index, result = helper(node.next)
+        if index == n:
+            return index + 1, node
+        return index + 1, result
+    _, target = helper(head)
+    return target.data if target else None
+```
+
+---
+
+## 🌳 **Sentence Tree**
+
+```python
+class TreeNode:
+    def __init__(self, word=""):
+        self.word = word
+        self.children = {}
+
+class SentenceTree:
+    def __init__(self):
+        self.root = TreeNode()
+
+    def store_sentence(self, sentence):
+        node = self.root
+        for word in sentence.split():
+            if word not in node.children:
+                node.children[word] = TreeNode(word)
+            node = node.children[word]
+
+    def contains_sentence(self, sentence):
+        node = self.root
+        for word in sentence.split():
+            if word not in node.children:
+                return False
+            node = node.children[word]
+        return True
+```
+
+---
+
+## 🎯 **Quick Tips for MCQ**
+
+1. **Time complexity from fast → slow**:  
+   ✅ `O(1) < O(log n) < O(n) < O(n^2)`
+
+2. **BST**:  
+   ✅ All given options in the MCQ are TRUE → pick "The other options are all True"
+
+3. **Binary Heap remove()**:  
+   ✅ Returns smallest/largest item (depending on min/max heap)
+
+4. **DLL insert/remove at front**:  
+   ✅ O(1)
+
+5. **HashMap with good distribution**:  
+   ✅ O(1)
+
+6. **ArrayList insert at front**:  
+   ✅ O(n)
+
+7. **BST Preorder last node printed**:  
+   ✅ Farthest right node
+
+8. **SLL insert/remove at front**:  
+   ✅ O(1)
+
+9. **HashMap vs BST (balanced)**:  
+   ✅ HashMap = O(1), BST = O(log n)
+
+---
+
+Let me know if you want a printable PDF version or flashcards!
